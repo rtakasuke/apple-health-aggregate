@@ -1,3 +1,5 @@
+# iOS ヘルスケアデータの DF を生成
+
 packages <- c("tidyverse", # 便利パッケージコレクション
               "dplyr",     # データフレーム操作用
               "magrittr",  # パイプ演算子が使える

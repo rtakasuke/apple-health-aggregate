@@ -1,2 +1,3 @@
-source("R/prep.R")
-source("R/active-fat.R")
+source("R/init.R")
+source("R/active-fat-df.R")
+source("R/active-fat-plot.R")

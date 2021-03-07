@@ -28,6 +28,7 @@ iOS のヘルスケアアプリのデータ解析用 (自分専用)
 ```
 or
 ```
-> source("R/prep.R")
-> source("R/active-fat.R")
+> source("R/init.R")
+> source("R/active-fat-df.R")
+> source("R/active-fat-plot.R")
 ```

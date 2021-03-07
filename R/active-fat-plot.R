@@ -1,47 +1,4 @@
-# 運動量と翌日の体脂肪増減の関係を解析
-
-# Active energy : アクティブエネルギー [kcal]
-filter.type <- "HKQuantityTypeIdentifierActiveEnergyBurned"
-filter.source <- "Mi Fit"
-df.activeenergy <- df %>%
-    filter(type == filter.type & sourceName == filter.source) %>%
-    select(lifedate, value) %>%
-    mutate_at(vars(value), as.numeric) %>%
-    rename(date = lifedate) %>%
-    rename(activeenergy = value) %>%
-    group_by(date) %>%
-    summarise(activeenergy = sum(activeenergy))
-
-# Weight [kg]
-filter.type <- "HKQuantityTypeIdentifierBodyMass"
-filter.source <- "HealthPlanet"
-df.weight <- df %>%
-    filter(type == filter.type & sourceName == filter.source) %>%
-    select(date, value) %>%
-    mutate_at(vars(value), as.numeric) %>%
-    rename(weight = value)
-
-# Body fat rate : 体脂肪率
-filter.type <- "HKQuantityTypeIdentifierBodyFatPercentage"
-filter.source <- "HealthPlanet"
-df.bodyfat.rate <- df %>%
-    filter(type == filter.type & sourceName == filter.source) %>%
-    select(date, value) %>%
-    mutate_at(vars(value), as.numeric) %>%
-    rename(bodyfat.rate = value)
-
-# Body fat : 体脂肪量 [kg] = `Wight` * `Body fat rate`
-df.bodyfat <- df.bodyfat.rate %>%
-    merge(df.weight, "date", all = T) %>%
-    group_by(date) %>%
-    summarise(bodyfat = bodyfat.rate * weight) %>%
-    mutate(bodyfat.diff = lead(bodyfat) - bodyfat)  # 次回計測時の減少量
-
-# 日付を key にして join
-df.join <- df.bodyfat %>%
-    merge(df.activeenergy, "date", all = T) %>%
-    # select(activeenergy, bodyfat.diff)
-    select(date, activeenergy, bodyfat.diff)
+# 運動量と翌日体脂肪増減の関係解析用散布図をプロット
 
 # 先に枠線だけ Plot
 dev.new()
@@ -87,7 +44,7 @@ get.wday.color <- function(wday) {
 }
 
 # 曜日毎に Plot
-prot.by.wday <- function(wday) {
+plot.by.wday <- function(wday) {
     df.target <- df.join %>%
         filter (wday(date) == wday)
     col <- get.wday.color(wday)
@@ -102,5 +59,5 @@ prot.by.wday <- function(wday) {
          col = col)
 }
 for(i in 1:7){
-    prot.by.wday(i)
+    plot.by.wday(i)
 }
