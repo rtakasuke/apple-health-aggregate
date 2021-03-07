@@ -13,10 +13,18 @@ df <- XML:::xmlAttrsToDataFrame(xml["//Record"], stringsAsFactors = FALSE)
 df %>%
     summary() %>%
     print()
+
 df$date <- df$startDate %>%
     str_extract_all("\\d{4}-\\d{2}-\\d{2}") %>%
-    unlist() %>%
-    as.Date()
+    ymd(tz = "Japan") %>%
+    date()
+
+# 夜ふかしを考慮して 5:00 までは前日とみなす (for Active energy)
+df$lifedate <- df$startDate %>%
+    str_extract_all("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}") %>%
+    ymd_hms(tz = "Japan") - hours(5)
+df$lifedate <- df$lifedate %>%
+    date()
 
 df.summary <- df %>%
     select(sourceName, type) %>%
