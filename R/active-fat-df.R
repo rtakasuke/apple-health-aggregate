@@ -40,5 +40,4 @@ df.bodyfat <- df.bodyfat.rate %>%
 # 日付を key にして join
 df.join <- df.bodyfat %>%
     merge(df.activeenergy, "date", all = T) %>%
-    # select(activeenergy, bodyfat.diff)
     select(date, activeenergy, bodyfat.diff)

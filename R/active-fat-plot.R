@@ -5,21 +5,39 @@ dev.new()
 x <- df.join$activeenergy
 y <- df.join$bodyfat.diff
 x.med <- x %>%
-    median(na.rm = TRUE)
+    median(na.rm = TRUE) %>%
+    formatC(digits = 3)
+x.avg <- x %>%
+    mean(na.rm = TRUE) %>%
+    formatC(digits = 3)
 y.med <- y %>%
-    median(na.rm = TRUE)
+    median(na.rm = TRUE) %>%
+    formatC(digits = 3)
+y.avg <- y %>%
+    mean(na.rm = TRUE) %>%
+    formatC(digits = 3)
 x.abs.max <- x %>%
     abs() %>%
     max(na.rm = TRUE)
 y.abs.max <- y %>%
     abs() %>%
     max(na.rm = TRUE)
+n <- df.join %>%
+    na.omit() %>%
+    nrow()
+sub <- paste("n =", n,
+             ", x.med =", x.med,
+             ", x.avg =", x.avg,
+             ", y.med =", y.med,
+             ", y.avg =", y.avg)
+
 pch <- 16  # ●でプロット
 plot(x, y,
      type = "n",
      xlim = c(0, x.abs.max),
      ylim = c(-y.abs.max, y.abs.max),   # Y 軸の中心を0にする
      main = "Reration of Active energy and next day's Body fat",
+     sub = sub,
      xlab = "Active energy [kcal]",
      ylab = "Increased body fat [kg]")
 abline(h = 0)                    # Y = 0 に線を引く
