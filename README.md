@@ -1,8 +1,10 @@
+![Lint](https://github.com/rtakasuke/apple-health-aggregate/workflows/Lint/badge.svg)
+
 # apple-health-aggregate
 iOS ヘルスケアアプリのデータ解析用 (自分用)  
   
   
-![image](https://user-images.githubusercontent.com/1833985/110324194-02a8e580-8059-11eb-8d34-c12fd206cee2.png)
+![image](https://user-images.githubusercontent.com/1833985/110990110-361ba500-83b6-11eb-83ac-1a581f880779.png)
 
 
 # Usage
@@ -24,8 +26,8 @@ data
 ```
 
 ## ブラウザから UI にアクセス
-http://localhost:8787/
-Username: rstudio
+http://localhost:8787/<br>
+Username: rstudio<br>
 Password: MY_PASSWORD
 
 
