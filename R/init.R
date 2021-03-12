@@ -10,7 +10,7 @@ for(package in packages)
     library(package, character.only = T)
 
 # Generate source DF from XML file
-xml <- xmlParse("~/Downloads/apple_health_export/export.xml")
+xml <- xmlParse("data/apple_health_export/export.xml")
 df <- XML:::xmlAttrsToDataFrame(xml["//Record"], stringsAsFactors = FALSE)
 df %>%
     summary() %>%
