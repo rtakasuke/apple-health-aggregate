@@ -19,19 +19,30 @@ data
     └── export.xml
 ```
 
-## コンテナ起動
+## RStudio セットアップ
+
+### クライアントアプリを使う場合
+作業ディレクトリをリポジトリルートに設定
+```
+> setwd("~/git/apple-health-aggregate")
+> getwd()
+[1] "/Users/rtakasuke/git/apple-health-aggregate"
+```
+
+### コンテナ上で RStudio Server を使う場合
+コンテナ起動
 ```
 > docker-compose build
 > docker-compose up -d
 ```
 
-## ブラウザから UI にアクセス
-http://localhost:8787/<br>
-Username: rstudio<br>
-Password: MY_PASSWORD
+ブラウザから UI にアクセス
+ - http://localhost:8787/<br>
+ - Username: rstudio<br>
+ - Password: MY_PASSWORD
 
 
-## R コンソールでコマンド実行
+## コンソールでコマンド実行
 ```
 > source("R/run.R")
 ```
