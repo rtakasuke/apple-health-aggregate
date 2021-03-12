@@ -4,7 +4,7 @@
 iPhone ヘルスケアデータ解析用 (自分用)  
   
   
-![image](https://user-images.githubusercontent.com/1833985/110990110-361ba500-83b6-11eb-83ac-1a581f880779.png)
+![image](https://user-images.githubusercontent.com/1833985/110993843-2fdbf780-83bb-11eb-9427-dc10e3f5d4ea.png)
 
 
 # Usage
