@@ -12,6 +12,9 @@ df.activeenergy <- df %>%
     group_by(date) %>%
     summarise(activeenergy = sum(activeenergy))
 
+df.activeenergy.dates <- df.activeenergy %>%
+    select(date)
+
 # Weight [kg]
 filter.type <- "HKQuantityTypeIdentifierBodyMass"
 filter.source <- "HealthPlanet"
@@ -31,11 +34,13 @@ df.bodyfat.rate <- df %>%
     rename(bodyfat.rate = value)
 
 # Body fat : 体脂肪量 [kg] = `Wight` * `Body fat rate`
-df.bodyfat <- df.bodyfat.rate %>%
+# 体組成計は乗り忘れがち. 翌日減少量を計算するために Active energy の日付を join
+df.bodyfat <- df.activeenergy.dates %>%
+    merge(df.bodyfat.rate, "date", all = T) %>%
     merge(df.weight, "date", all = T) %>%
     group_by(date) %>%
     summarise(bodyfat = bodyfat.rate * weight) %>%
-    mutate(bodyfat.diff = lead(bodyfat) - bodyfat)  # 次回計測時の減少量
+    mutate(bodyfat.diff = lead(bodyfat) - bodyfat)  # 翌日減少量
 
 # 日付を key にして join
 df.join <- df.bodyfat %>%

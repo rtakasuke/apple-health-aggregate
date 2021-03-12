@@ -1,8 +1,10 @@
 # apple-health-aggregate
-iOS のヘルスケアアプリのデータ解析用 (自分専用)  
+iOS ヘルスケアアプリのデータ解析用 (自分用)  
+もしかしたら無意味。  
   
   
-![image](https://user-images.githubusercontent.com/1833985/110247635-8955b800-7fb0-11eb-8cc4-d94cf1920034.png)
+![image](https://user-images.githubusercontent.com/1833985/110324194-02a8e580-8059-11eb-8d34-c12fd206cee2.png)
+
 
 # Usage
 ## iOS からヘルスケアデータをエクスポート
