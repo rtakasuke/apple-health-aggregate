@@ -25,17 +25,19 @@ y.abs.max <- y %>%
 n <- df.join %>%
     na.omit() %>%
     nrow()
-sub <- paste("n =", n,
-             ", x.med =", x.med,
-             ", x.avg =", x.avg,
-             ", y.med =", y.med,
-             ", y.avg =", y.avg)
+xlim <- c(0, x.abs.max)
+ylim <- c(-y.abs.max, y.abs.max) # Y 軸の中心を0にする
+sub <- paste("n =", n, ", ",
+             "x.med =", x.med, ", ",
+             "x.avg =", x.avg, ", ",
+             "y.med =", y.med, ", ",
+             "y.avg =", y.avg)
 
 pch <- 16  # ●でプロット
 plot(x, y,
      type = "n",
-     xlim = c(0, x.abs.max),
-     ylim = c(-y.abs.max, y.abs.max),   # Y 軸の中心を0にする
+     xlim = xlim,
+     ylim = ylim,
      main = "Reration of Active energy and next day's Body fat",
      sub = sub,
      xlab = "Active energy [kcal]",
@@ -69,9 +71,10 @@ plot.by.wday <- function(wday) {
     x.target <- df.target$activeenergy
     y.target <- df.target$bodyfat.diff
     par(new = TRUE)
-    plot(x.target, y.target,
-         xlim = c(0, x.abs.max),
-         ylim = c(-y.abs.max, y.abs.max),  # Y 軸の中心を0にする
+    plot(x.target,
+         y.target,
+         xlim = xlim,
+         ylim = ylim,
          ann = FALSE,
          pch = pch,
          col = col)
