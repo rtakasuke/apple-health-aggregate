@@ -1,4 +1,5 @@
-FROM rockerjp/tidyverse:latest
-EXPOSE 8787:8787
+FROM rockerjp/tidyverse
 ENV DEBCONF_NOWARNINGS yes
-RUN apt-get update && apt-get install -y libxt6
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libxt6 \
+    && rm -rf /var/lib/apt/lists/*
