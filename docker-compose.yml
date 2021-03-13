@@ -2,8 +2,6 @@ version: '3'
 services:
   apple-health-aggregate:
     build: .
-    volumes:
-      - ./mysql/db:/docker-entrypoint-initdb.d
     container_name: apple-health-aggregate
     environment:
       - PASSWORD=MY_PASSWORD
