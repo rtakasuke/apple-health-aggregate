@@ -19,9 +19,9 @@ data
     └── export.xml
 ```
 
-## RStudio セットアップ
+## R 実行環境をセットアップ
 
-### クライアントアプリを使う場合
+### R.app を使う場合
 作業ディレクトリをリポジトリルートに設定
 ```
 > setwd("~/git/apple-health-aggregate")
