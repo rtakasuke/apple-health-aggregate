@@ -44,11 +44,6 @@ data
 
 ## コンソールでコマンド実行
 ```
-> source("R/run.R")
-```
-or
-```
-> source("R/init.R")
-> source("R/active-fat-df.R")
-> source("R/active-fat-plot.R")
+> source("R/extract-df.R")
+> source("R/active-fat.R")
 ```
