@@ -1,14 +1,5 @@
 # iOS ヘルスケアデータの DF を生成
 
-packages <- c("tidyverse", # 便利パッケージコレクション
-              "dplyr",     # データフレーム操作用
-              "magrittr",  # パイプ演算子が使える
-              "lubridate", # 日付時刻処理
-              "XML")
-install.packages(setdiff(packages, rownames(installed.packages())))
-for(package in packages)
-    library(package, character.only = T)
-
 # Generate source DF from XML file
 xml <- xmlParse("data/apple_health_export/export.xml")
 df <- XML:::xmlAttrsToDataFrame(xml["//Record"], stringsAsFactors = FALSE)

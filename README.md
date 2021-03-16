@@ -37,13 +37,15 @@ data
 ```
 
 ブラウザから UI にアクセス
- - http://localhost:8787/<br>
- - Username: rstudio<br>
+
+ - http://localhost:8787/
+ - Username: rstudio
  - Password: MY_PASSWORD
 
 
-## コンソールでコマンド実行
+## R コンソールでコマンド実行
 ```
+> source("R/init.R")
 > source("R/extract-df.R")
 > source("R/active-fat.R")
 ```
